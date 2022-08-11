@@ -1,0 +1,77 @@
+<div class="input-group px-3">
+    <input
+      [formControl]="search"
+      type="text"
+      class="form-control rounded"
+      placeholder="Buscar producto"
+      aria-label="Search"
+      aria-describedby="search-addon"
+      id="searchB"
+    />
+    <button *ngIf="!isLoading"  type="button" class="btn btn-success" (click)="searchProduct()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-search"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+        />
+      </svg>
+    </button>
+  
+  
+    <button *ngIf="isLoading" class="btn btn-success" type="button" disabled>
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      <span class="sr-only"> </span>
+    </button>
+  </div>
+  
+  <br />
+  
+  
+  <div class="cardPrincipal" style=" display: flex; flex-direction: column; justify-content:flex-end">
+    <div id="Layer1" 
+    style="overflow: scroll !important"
+    [ngStyle]="{
+      'height': altura + 'px'
+    }"
+    
+    >
+      <div
+        style="
+          width: 1200px;
+          height: 1600px;
+          background-image: url(https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/PE/LABORATORIA/123/MapJockeyPlaza.svg);
+        "
+      >
+        <div
+          [ngStyle]="{
+            'padding-top': coordenadas[0] + 'px',
+            'padding-left': coordenadas[1] + 'px'
+          }"
+        >
+          <img
+            src="https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/PE/LABORATORIA/123/ubi.png"
+            style="width: 20px; height: 35px"
+          />
+        </div>
+      </div>
+    </div>
+  
+    <div  class="carbox text-center">
+      <p class="card-title titleCard">Categoría <strong> {{ categoria }}</strong>  </p>
+      <p class="card-text titleCard">
+        Ubicación 
+      
+          <strong>  {{ pa_sec + ' ' + pasillo }}</strong>    
+       
+      </p>
+  
+    </div>
+    
+  </div>
+  <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
