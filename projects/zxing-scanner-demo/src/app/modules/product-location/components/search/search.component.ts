@@ -58,7 +58,7 @@ export class SearchComponent implements OnInit {
               let restoDelSaludo = categoriaMin.slice(1);
               this.categoria = primeraLetra + restoDelSaludo;
               let s = document.getElementById('Layer1');
-              
+
               s?.scroll(
                 parseInt(this.coordenadas[1]) - 200,
                 parseInt(this.coordenadas[0]) - 200
@@ -109,6 +109,8 @@ export class SearchComponent implements OnInit {
           // @ts-ignore
           this.tienda = params.tienda;
 
+          this.categoria = this.categoria.replace(/_/g, ' ');
+
           this.searchService
             .searchProducts$(this.tienda, this.categoria)
             .subscribe((res) => {
@@ -134,11 +136,7 @@ export class SearchComponent implements OnInit {
               } else {
                 this.pa_sec = 'Sección';
               }
-
             });
-
-
-
         }
       });
     } catch (error) {
