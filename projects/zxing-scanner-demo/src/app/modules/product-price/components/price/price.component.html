@@ -1,17 +1,18 @@
 <div class="container">
-    <div class="d-flex justify-content-center">
-      <img
-        src="https://s3-bucket-jarol.s3.amazonaws.com/LogoTottus.jpg"
-        class="card-img-top eye"
-        style="width: 125px; padding: 8px 0 16px 0"
-      />
-    </div>
-  
-    <p class="title">Consulta precio</p>
-    <p class="subtitle" *ngIf="!isResult ">Enfoca el código de barras del producto</p>
-    
-  
-    <!-- <div class="input-group ">
+  <div class="d-flex justify-content-center">
+    <img
+      src="https://s3-bucket-jarol.s3.amazonaws.com/LogoTottus.jpg"
+      class="card-img-top eye"
+      style="width: 125px; padding: 8px 0 16px 0"
+    />
+  </div>
+
+  <p class="title">Consulta precio</p>
+  <p class="subtitle" *ngIf="!isResult && isResult2">
+    Enfoca el código de barras del producto
+  </p>
+
+  <!-- <div class="input-group ">
       <input
         [formControl]="search"
         type="text"
@@ -50,39 +51,58 @@
         <span class="sr-only"> </span>
       </button>
     </div> -->
-    <br />
-    <div  class="border rounded text-start titleResult pt-2 px   -3"  *ngIf="isResult && isMsg" style="background-color: #F5F5F5;" >
-      <p class="card-title titleCard"> <strong> {{ nameProduct }}</strong>  </p>
-      <p class="card-title titleCard"> MARCA {{ marca }}  </p>
-      <p class="card-title titleCard"> <strong> Tienda:</strong>  {{ descTienda }}  </p>
-      
-      <p class="card-title titleCard"*ngIf="isPriceEQ"> <strong> Precio:</strong> S/{{ precio }}  </p>
-      <p class="card-title titleCard"*ngIf="!isPriceEQ"> <strong> Precio Oferta:</strong> S/{{ this.precioCRM }}  </p>
-      <p class="card-title titleCard"*ngIf="!isPriceEQ"> <strong> Precio Regular:</strong> S/{{ precio }}  </p>
-  
-  
-    </div>
-    <br />
-    <p class="subtitleHeader" *ngIf="isResult && !isMsg" >{{msgHeader}}</p>
-    <p class="subtitle" *ngIf="isResult" >{{msg}}</p>
-   
+  <br />
+  <div
+    class="border rounded text-start titleResult pt-2 px -3"
+    *ngIf="isResult && isMsg"
+    style="background-color: #f5f5f5"
+  >
+    <p class="card-title titleCard">
+      <strong> {{ nameProduct }}</strong>
+    </p>
+    <p class="card-title titleCard">MARCA {{ marca }}</p>
+    <p class="card-title titleCard">
+      <strong> Tienda:</strong> {{ descTienda }}
+    </p>
 
-  <div class="container">
+    <p class="card-title titleCard" *ngIf="isPriceEQ">
+      <strong> Precio:</strong> S/{{ precio }}
+    </p>
+    <p class="card-title titleCard" *ngIf="!isPriceEQ">
+      <strong> Precio Oferta:</strong> S/{{ this.precioCRM }}
+    </p>
+    <p class="card-title titleCard" *ngIf="!isPriceEQ">
+      <strong> Precio Regular:</strong> S/{{ precio }}
+    </p>
+  </div>
+  <br />
+  <p class="subtitleHeader" *ngIf="isResult && !isMsg  && isResult2">{{ msgHeader }}</p>
+  <p class="subtitle" *ngIf="isResult  && isResult2 ">{{ msg }}</p>
+
+  <p class="subtitleHeader" *ngIf="!isResult2 && !isMsg">{{ msgHeader }}</p>
+  <p class="subtitle" *ngIf="!isResult2 ">{{ msg }}</p>
+
+  <div class="container" *ngIf="isResult2">
     <div class="logo"></div>
     <div class="name">Simple Sample</div>
     <div id="description" class="description" *ngIf="showDescription">
       Start the scanner and then aim at a barcode to get the encoded data.
     </div>
-  
+
     <div id="lib-loading" *ngIf="!scannerReady">
       <br />Library is loading, please wait...
     </div>
-  
-    <button id="barcode-picker-starter-button" *ngIf="showButton" (click)="startBarcodePicker()">
+
+    <button
+      id="barcode-picker-starter-button"
+      *ngIf="showButton"
+      (click)="startBarcodePicker()"
+    >
       Start Scanning
     </button>
-  
+
     <scandit-barcode-picker
+   
       #barcodePicker
       id="barcode-picker"
       configure.licenseKey="AZvBfQ86LZa2KcZlVjPEbPQbxArdCR3/zGhvy1ITJwffdkVmrxHWfks+zCIZQesKsUsFAGgiAeuaeAHK0Hk6ltF0cwnyL9v37G7Ay9NX9kc2RwXHcH8J+EZflmjeOo4wxRwlHVYM5jVTf6BSOEqLhB9LJtxYds4DMCfOXGlA9tjYdTYnmkDsnKBE+XfHQIf3a1Kr2Cdm5nOeHHxZy0rfQ7phD0iYW9tq6WC8k19CrfOZa7omMW7ca0trpq7/Z/j0TH+FRMVaogz5bRooCkILe6hZOpQ9b9C3CzFFFHBpvKQdbvdLHWGia7p1e7NBa9Wb2l7eSj59rSNeajKcH32XWb5I3RmCTPNq91iSbuRGkq0OSLwT/zCpLhxqvVeIW9JFpj4mfgNhTg1mNqvcrypj4kRYD7uIGRxpfjNBLrw5fCLWIbs4ZVFM36tFzS9JQR5o0XYcTNc2K5BAByC/2knu6NpVZQ0/TkgORRsdoTmMYaufuLFAsU4APfxtrL33AG4fR5Xd6wMzu+5VD62x2aEA8rKg7a08LfkFGaAFdIbNwpouHMdyPuAGK8hhgio9FhsLg7uI+jh3AqJnZ7Prq/fNi3BMOjHJ1deKqNldnggEEWVDpuHcnpL8Qkj825SfUCjZxDiftTtg++rnhLE5VpuGHicZV75DlLeCBPujoy4eE9DFWk6rSVjg2K/U23SJCSccMYAbWyh021/El6kI1Rnagr5DMLpI8RH+AjazyfVyCPmKenbyFb8TxnKjukmD4r6iWMFfGyfEMVqC6G4iK2ymy9DXBztP/j21+6m2iMkIvz1LrZJ435NcJ5mU+oPInjleqhiCIhmrSzS/d2Ia4BMwI30fzMex9Lu2pjbPOe7dF3p5/h+ebjADk0j5iHxEWpmLlB6fTmCEgrO84A0NIgZcgxvpDhoCJ6H6p40e5Vg0IlBWkmTACMP4IxgkpYXKLgu/Uo3jWmHUmKpiYO/icDxRs3XSoobOUwwtAYW1N19ZJ6jRNQpuj4yKEY2pLP+SJBo+2TjZTqMrZM62+9YgnXaUe8KYrECITe/jWCX757mYjDFAoz1uCWb+1XIUYbHNqQC9qrwtHrv0MLeXLUzWL+0E5jDmhny2XO1XHdxjLBFXR0JTseIRsbnEbXslSw8SvrsHjcmBAoIXoa+s"
@@ -92,8 +112,11 @@
       playSoundOnScan="true"
       vibrateOnScan="true"
       scanSettings.enabledSymbologies='["ean8", "ean13", "upca", "upce"]'
+      cameraAccessError="onAccessError($event)"
       (ready)="onReady()"
-      (scan)="onScan($event)">
+      (scan)="onScan($event)"
+      accessCamera="true"
+    >
     </scandit-barcode-picker>
     <section class="results" *ngIf="result">
       <div>
@@ -103,4 +126,51 @@
       <button mat-icon-button (click)="clearResult()">&times;</button>
     </section>
   </div>
+
+  <div class="div" *ngIf="!isResult2" style="color: black;">
+    Puedes digitar los números que aparecen debajo del código de barra para consultar sobre tu producto
+<br/>
+<br/>
+     <div class="input-group">
+      <input
+        [formControl]="search"
+        type="text"
+        class="form-control rounded"
+        placeholder="Digita el Código EAN"
+        aria-label="Search"
+        aria-describedby="search-addon"
+        id="search"
+      />
+      <button
+        *ngIf="!isLoading"
+        type="button"
+        class="btn btn-success"
+        (click)="searchProduct(true)"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-search"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+          />
+        </svg>
+      </button>
+  
+      <button *ngIf="isLoading" class="btn btn-success" type="button" disabled>
+        <span
+          class="spinner-border spinner-border-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        <span class="sr-only"> </span>
+      </button>
+    </div> 
+
+  </div>
   <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+</div>

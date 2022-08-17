@@ -20,6 +20,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
    MatSelectModule,
    MatInputModule,
    MatMenuModule,
-   MatIconModule
+   MatIconModule,
+   ReactiveFormsModule
     
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
