@@ -27,7 +27,7 @@ export class SearchService {
       ean: ean
     };
     const res = this.http.post(
-      this.URL_EXP_DIGITAL_TDA + '/readimage',
+      this.URL_EXP_DIGITAL_TDA + '/readproductprice',
       body,
       {
         headers,
